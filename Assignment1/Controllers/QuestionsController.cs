@@ -17,7 +17,7 @@ namespace Assignment1.Controllers
         // GET: Questions
         public ActionResult Index()
         {
-            var questions = db.Questions.Include(q => q.Test);
+            var questions = db.Questions.Include(q => q.QuestionType).Include(q => q.Test);
             return View(questions.ToList());
         }
 
@@ -39,7 +39,8 @@ namespace Assignment1.Controllers
         // GET: Questions/Create
         public ActionResult Create()
         {
-            ViewBag.TestId = new SelectList(db.Tests, "Id", "name");
+            ViewBag.QuestionTypeId = new SelectList(db.QuestionTypes, "Id", "QuestionType1");
+            ViewBag.TestId = new SelectList(db.Tests, "Id", "author");
             return View();
         }
 
@@ -48,7 +49,7 @@ namespace Assignment1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,TestId,QuestionText,QuestionType,QuestionNumber")] Question question)
+        public ActionResult Create([Bind(Include = "Id,TestId,QuestionText,QuestionNumber,QuestionTypeId")] Question question)
         {
             if (ModelState.IsValid)
             {
@@ -57,6 +58,7 @@ namespace Assignment1.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.QuestionTypeId = new SelectList(db.QuestionTypes, "Id", "QuestionType1", question.QuestionTypeId);
             ViewBag.TestId = new SelectList(db.Tests, "Id", "author", question.TestId);
             return View(question);
         }
@@ -73,6 +75,7 @@ namespace Assignment1.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.QuestionTypeId = new SelectList(db.QuestionTypes, "Id", "QuestionType1", question.QuestionTypeId);
             ViewBag.TestId = new SelectList(db.Tests, "Id", "author", question.TestId);
             return View(question);
         }
@@ -82,7 +85,7 @@ namespace Assignment1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,TestId,QuestionText,QuestionType,QuestionNumber")] Question question)
+        public ActionResult Edit([Bind(Include = "Id,TestId,QuestionText,QuestionNumber,QuestionTypeId")] Question question)
         {
             if (ModelState.IsValid)
             {
@@ -90,6 +93,7 @@ namespace Assignment1.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.QuestionTypeId = new SelectList(db.QuestionTypes, "Id", "QuestionType1", question.QuestionTypeId);
             ViewBag.TestId = new SelectList(db.Tests, "Id", "author", question.TestId);
             return View(question);
         }
