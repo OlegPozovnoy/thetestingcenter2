@@ -25,8 +25,5 @@ namespace Assignment1.Tests.Controllers
             Assert.IsNotNull(result);
         }
 
-
-
-
     }
 }
