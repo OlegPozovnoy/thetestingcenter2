@@ -4,3 +4,5 @@
 It's flexible enough to cover all main tests format and can be used for individual/group exam preparation.</p> 
 
 <p>Bootstrap Readable theme came from <a href="https://bootswatch.com/3/readable/">https://bootswatch.com/3/readable/</a></p> 
+
+<p>The code is deployed at <a href="https://thetestingcenter.azurewebsites.net/">https://thetestingcenter.azurewebsites.net/</a></p> 
