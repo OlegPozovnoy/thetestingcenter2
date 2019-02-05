@@ -40,7 +40,7 @@ namespace Assignment1.Controllers
         public ActionResult Create()
         {
             ViewBag.QuestionTypeId = new SelectList(db.QuestionTypes, "Id", "QuestionType1");
-            ViewBag.TestId = new SelectList(db.Tests, "Id", "author");
+            ViewBag.TestId = new SelectList(db.Tests, "Id", "name");
             return View();
         }
 
@@ -59,7 +59,7 @@ namespace Assignment1.Controllers
             }
 
             ViewBag.QuestionTypeId = new SelectList(db.QuestionTypes, "Id", "QuestionType1", question.QuestionTypeId);
-            ViewBag.TestId = new SelectList(db.Tests, "Id", "author", question.TestId);
+            ViewBag.TestId = new SelectList(db.Tests, "Id", "name",question.TestId);
             return View(question);
         }
 

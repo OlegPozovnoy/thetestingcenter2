@@ -16,6 +16,7 @@ namespace Assignment1.Models
 
         public int Id { get; set; }
 
+        [Display(Name = "QuestionType")]
         [Column("QuestionType")]
         [StringLength(64)]
         public string QuestionType1 { get; set; }

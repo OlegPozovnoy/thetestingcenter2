@@ -13,16 +13,20 @@ namespace Assignment1.Models
         {
             Answers = new HashSet<Answer>();
         }
-
+        [Display(Name = "QuestionId")]
         public int Id { get; set; }
 
+        [Display(Name = "TestId")]
         public int TestId { get; set; }
 
         [Required]
+        [Display(Name = "Question")]
         public string QuestionText { get; set; }
 
+        [Display(Name = "QuestionNumber")]
         public int QuestionNumber { get; set; }
 
+        [Display(Name = "QuestionType")]
         public int QuestionTypeId { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
