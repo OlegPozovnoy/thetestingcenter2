@@ -7,8 +7,12 @@
 
 <h2>Tests list</h2>
 
+
+
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @if (Request.IsAuthenticated) {
+        Html.ActionLink("Create New", "Create");
+        }
 </p>
 <table class="table">
     <tr>
@@ -24,8 +28,11 @@
         <th>
             Questions
         </th>
-        <th></th>
-    </tr>
+        @if (Request.IsAuthenticated)
+        {
+            <th></th>
+        }
+        </tr>
 
 @foreach (var item in Model) {
     <tr>
@@ -41,11 +48,15 @@
         <td>
             @Html.DisplayFor(modelItem => item.Questions.Count)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-        </td>
-    </tr>
+
+        @if (Request.IsAuthenticated)
+        {
+            <td>
+                Html.ActionLink("Edit", "Edit", new { id = item.Id });
+                Html.ActionLink("Delete", "Delete", new { id = item.Id });
+            </td>
+        }
+        </tr>
 }
 
 </table>

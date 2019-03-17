@@ -37,6 +37,7 @@ namespace Assignment1.Controllers
         }
 
         // GET: Questions/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.QuestionTypeId = new SelectList(db.QuestionTypes, "Id", "QuestionType1");
@@ -49,6 +50,7 @@ namespace Assignment1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "Id,TestId,QuestionText,QuestionNumber,QuestionTypeId")] Question question)
         {
             if (ModelState.IsValid)
@@ -64,6 +66,7 @@ namespace Assignment1.Controllers
         }
 
         // GET: Questions/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -85,6 +88,7 @@ namespace Assignment1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "Id,TestId,QuestionText,QuestionNumber,QuestionTypeId")] Question question)
         {
             if (ModelState.IsValid)
@@ -99,6 +103,7 @@ namespace Assignment1.Controllers
         }
 
         // GET: Questions/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -116,6 +121,7 @@ namespace Assignment1.Controllers
         // POST: Questions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             Question question = db.Questions.Find(id);
