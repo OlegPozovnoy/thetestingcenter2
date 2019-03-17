@@ -6,53 +6,56 @@
 }
 
 <h2>Answers list</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Question.Test.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Question.QuestionText)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Answer1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Score)
-        </th>
-        @if (Request.IsAuthenticated)
-        {
-            <th></th>
-        }
-        </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Question.Test.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Question.QuestionText)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Answer1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Score)
-        </td>
-
-        @if (Request.IsAuthenticated)
-        {
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        }
-        </tr>
+@if (Request.IsAuthenticated)
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
 }
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Question.Test.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Question.QuestionText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Answer1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Score)
+            </th>
+            @if (Request.IsAuthenticated)
+            {
+                <th></th>
+            }
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Question.Test.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Question.QuestionText)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Answer1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Score)
+                </td>
+
+                @if (Request.IsAuthenticated)
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                }
+            </tr>
+        }
+
+    </table>

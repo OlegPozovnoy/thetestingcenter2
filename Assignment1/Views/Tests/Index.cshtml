@@ -8,55 +8,57 @@
 <h2>Tests list</h2>
 
 
-
-<p>
-    @if (Request.IsAuthenticated) {
+@if (Request.IsAuthenticated)
+{
+    <p>
         Html.ActionLink("Create New", "Create");
-        }
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.author)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.description)
-        </th>
-        <th>
-            Questions
-        </th>
-        @if (Request.IsAuthenticated)
-        {
-            <th></th>
-        }
-        </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.author)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Questions.Count)
-        </td>
-
-        @if (Request.IsAuthenticated)
-        {
-            <td>
-                Html.ActionLink("Edit", "Edit", new { id = item.Id });
-                Html.ActionLink("Delete", "Delete", new { id = item.Id });
-            </td>
-        }
-        </tr>
+    </p>
 }
 
-</table>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+            <th>
+                Questions
+            </th>
+            @if (Request.IsAuthenticated)
+            {
+                <th></th>
+            }
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Questions.Count)
+                </td>
+
+                @if (Request.IsAuthenticated)
+                {
+                    <td>
+                        Html.ActionLink("Edit", "Edit", new { id = item.Id });
+                        Html.ActionLink("Delete", "Delete", new { id = item.Id });
+                    </td>
+                }
+            </tr>
+        }
+
+    </table>
