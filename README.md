@@ -7,4 +7,4 @@ It's flexible enough to cover all main tests format and can be used for individu
 
 <p>The code is deployed at <a href="https://thetestingcenter2.azurewebsites.net/">https://thetestingcenter.azurewebsites.net/</a></p> 
 
-<p>As for "advanced .NET MVC feature that we have not yet learned in class." - I've added "Display" annotation for some fields in order to correct the default names, not sure it may be called "advanced", but the mentioning will not hurt anyway</p>
+<p>The site have embedded Google and Microsoft authenification </p>
