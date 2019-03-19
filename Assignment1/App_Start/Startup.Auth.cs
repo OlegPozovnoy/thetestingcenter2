@@ -47,9 +47,9 @@ namespace Assignment1
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
             // Uncomment the following lines to enable logging in with third party login providers
-            app.UseMicrosoftAccountAuthentication(
-                clientId: ConfigurationManager.AppSettings["MicrosoftClientId"],
-                clientSecret: ConfigurationManager.AppSettings["MicrosoftClientSecret"]);
+            //app.UseMicrosoftAccountAuthentication(
+            //    clientId: ConfigurationManager.AppSettings["MicrosoftClientId"],
+            //    clientSecret: ConfigurationManager.AppSettings["MicrosoftClientSecret"]);
 
             //app.UseTwitterAuthentication(
             //   consumerKey: "",
