@@ -140,7 +140,18 @@ namespace Assignment1.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             //Test test = db.Tests.Find(id);
+
+            if (id == null)
+            {
+                return View("Error");
+            }
+
             Test test = db.Tests.SingleOrDefault(c => c.Id == id);
+
+            if (test == null)
+            {
+                return View("Error");
+            }
             //db.Tests.Remove(test);
             //db.SaveChanges();
             db.Delete(test);

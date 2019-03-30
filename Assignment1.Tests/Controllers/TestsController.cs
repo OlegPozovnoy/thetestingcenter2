@@ -94,5 +94,41 @@ namespace Assignment1.Tests.Controllers
             ViewResult result = (ViewResult)controller.Details(500);
             Assert.AreEqual("Details", result.ViewName);
         }
+
+        [TestMethod]
+        public void EditValidTestView()
+        {
+            RedirectToRouteResult result = (RedirectToRouteResult)controller.Edit(tests[0]);
+            Assert.AreEqual("Index", result.RouteValues["action"]);
+        }
+
+
+        [TestMethod]
+        public void EditIdNull()
+        {
+            int? id = null;
+
+            var result = (ViewResult)controller.Edit(id);
+
+            Assert.AreEqual("Error", result.ViewName);
+
+        }
+
+        [TestMethod]
+        public void EditIdInvalid()
+        {
+            var result = (ViewResult)controller.Edit(-1);
+
+            Assert.AreEqual("Error", result.ViewName);
+
+        }
+
+        [TestMethod]
+        public void EditIdValid()
+        {
+            Test result = (Test)((ViewResult)controller.Edit(tests[0].Id)).Model;
+            Assert.AreEqual(tests[0], result);
+        }
+
     }
 }
