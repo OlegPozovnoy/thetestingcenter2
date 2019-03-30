@@ -4,9 +4,9 @@ namespace Assignment1.Models
 {
     public interface IMockTests
     {
-        IQueryable<Test> Categories { get; }
-        Test Save(Test category);
-        void Delete(Test category);
+        IQueryable<Test> Tests { get; }
+        Test Save(Test Tests);
+        void Delete(Test Tests);
         void Dispose();
     }
 }

@@ -12,12 +12,25 @@ namespace Assignment1.Controllers
 {
     public class TestsController : Controller
     {
-        private DbModel db = new DbModel();
+        //private DbModel db = new DbModel();
+
+        IMockTests db;
 
         // GET: Tests
+
+        public TestsController()
+        {
+            this.db = new IDataTests();
+        }
+
+        public TestsController(IMockTests mockDb)
+        {
+            this.db = mockDb;
+        }
+
         public ActionResult Index()
         {
-            return View(db.Tests.ToList());
+            return View("Index",db.Tests.ToList());
         }
 
         // GET: Tests/Details/5

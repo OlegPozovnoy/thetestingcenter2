@@ -7,7 +7,7 @@ namespace Assignment1.Models
         // db connection
         private DbModel db = new DbModel();
 
-        public IQueryable<Test> Categories { get { return db.Tests; } }
+        public IQueryable<Test> Tests { get { return db.Tests; } }
 
         public void Delete(Test test)
         {
