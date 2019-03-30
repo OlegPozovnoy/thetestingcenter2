@@ -30,7 +30,7 @@ namespace Assignment1.Controllers
 
         public ActionResult Index()
         {
-            return View("Index",db.Tests.ToList());
+            return View("Index",db.Tests.OrderBy(c => c.Id).ToList());
         }
 
         // GET: Tests/Details/5
@@ -38,22 +38,24 @@ namespace Assignment1.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("Error");
             }
             //Test test = db.Tests.Find(id);
             Test test = db.Tests.SingleOrDefault( c => c.Id == id);
             if (test == null)
             {
-                return HttpNotFound();
+                //return HttpNotFound();
+                return View("Error");
             }
-            return View(test);
+            return View("Details",test);
         }
 
         // GET: Tests/Create
         [Authorize]
         public ActionResult Create()
         {
-            return View();
+            return View("Create");
         }
 
         // POST: Tests/Create
