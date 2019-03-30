@@ -74,7 +74,7 @@ namespace Assignment1.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(test);
+            return View("Create", test);
         }
 
         // GET: Tests/Edit/5
@@ -83,15 +83,17 @@ namespace Assignment1.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("Error");
             }
             //Test test = db.Tests.Find(id);
             Test test = db.Tests.SingleOrDefault(c => c.Id == id);
             if (test == null)
             {
-                return HttpNotFound();
+                //return HttpNotFound();
+                return View("Error");
             }
-            return View(test);
+            return View("Edit",test);
         }
 
         // POST: Tests/Edit/5
@@ -109,7 +111,7 @@ namespace Assignment1.Controllers
                 db.Save(test);
                 return RedirectToAction("Index");
             }
-            return View(test);
+            return View("Edit",test);
         }
 
         // GET: Tests/Delete/5
@@ -118,15 +120,17 @@ namespace Assignment1.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("Error");
             }
             //Test test = db.Tests.Find(id);
             Test test = db.Tests.SingleOrDefault(c => c.Id == id);
             if (test == null)
             {
-                return HttpNotFound();
+                //return HttpNotFound();
+                return View("Error");
             }
-            return View(test);
+            return View("Delete", test);
         }
 
         // POST: Tests/Delete/5
