@@ -172,5 +172,50 @@ namespace Assignment1.Tests.Controllers
             ViewResult result = (ViewResult)controller.Delete(tests[0].Id);
             Assert.AreEqual("Delete", result.ViewName);
         }
+
+        [TestMethod]
+        public void EditPostInvalidState()
+        {
+            Test invalid = new Test { Id = tests[0].Id };
+            controller.ModelState.AddModelError("Edit Error", "the test is invalid");
+            Test result = (Test)((ViewResult)controller.Edit(invalid)).Model;
+            Assert.AreEqual(result, invalid);
+        }
+
+        [TestMethod]
+        public void EditPostInvalidStateView()
+        {
+            Test invalid = new Test { Id = tests[0].Id };
+            controller.ModelState.AddModelError("Edit Error", "the test is invalid");
+            ViewResult result = (ViewResult)controller.Edit(invalid);
+            Assert.AreEqual("Edit", result.ViewName);
+        }
+
+        [TestMethod]
+        public void CreateValidTest()
+        {
+            Test valid = new Test { Id = 1999, name="valid", author ="valid",description="valid" };
+            RedirectToRouteResult result = (RedirectToRouteResult)controller.Create(valid);
+            Assert.AreEqual("Index", result.RouteValues["action"]);
+        }
+
+        [TestMethod]
+        public void CreateInValidTestView()
+        {
+            Test invalid = new Test { Id = -1, name = "invalid", author = "invalid", description = "invalid" };
+            controller.ModelState.AddModelError("Create Error", "the test is invalid");
+            ViewResult result = (ViewResult)controller.Create(invalid);
+            Assert.AreEqual("Create", result.ViewName);
+        }
+
+        [TestMethod]
+        public void CreateInValidTestValue()
+        {
+            Test invalid = new Test { Id = -1, name = "invalid", author = "invalid", description = "invalid" };
+            controller.ModelState.AddModelError("Create Error", "the test is invalid");
+            Test result = (Test)((ViewResult)controller.Create(invalid)).Model;
+            Assert.AreEqual(invalid, result);
+        }
+
     }
 }
