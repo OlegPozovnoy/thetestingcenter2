@@ -239,5 +239,6 @@ namespace Assignment1.Tests.Controllers
             RedirectToRouteResult result = (RedirectToRouteResult)controller.DeleteConfirmed(tests[0].Id);
             Assert.AreEqual("Index", result.RouteValues["action"]);
         }
+
     }
 }
