@@ -187,7 +187,9 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\DbModel.cs" />
+    <Compile Include="Models\IDataTests.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\IMockTests.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\QuestionType.cs" />
