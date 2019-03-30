@@ -74,7 +74,7 @@ namespace Assignment1.Tests.Controllers
         [TestMethod]
         public void DetailsIdMissing()
         {
-            var result = (ViewResult)controller.Details(null);
+            var result = (ViewResult)controller.Details(-1);
 
             Assert.AreEqual("Error", result.ViewName);
 
@@ -217,5 +217,27 @@ namespace Assignment1.Tests.Controllers
             Assert.AreEqual(invalid, result);
         }
 
+        [TestMethod]
+        public void DeleteConfirmedNoId()
+        {
+            int? id = null;
+            ViewResult result = (ViewResult)controller.DeleteConfirmed(id);
+            Assert.AreEqual("Error", result.ViewName);
+        }
+
+        [TestMethod]
+        public void DeleteConfirmedMissingId()
+        {
+            ViewResult result = (ViewResult)controller.DeleteConfirmed(-1);
+            Assert.AreEqual("Error", result.ViewName);
+        }
+
+
+        [TestMethod]
+        public void DeleteConfirmedCorrectIdView()
+        {
+            RedirectToRouteResult result = (RedirectToRouteResult)controller.DeleteConfirmed(tests[0].Id);
+            Assert.AreEqual("Index", result.RouteValues["action"]);
+        }
     }
 }

@@ -137,7 +137,7 @@ namespace Assignment1.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int? id)
         {
             //Test test = db.Tests.Find(id);
 
