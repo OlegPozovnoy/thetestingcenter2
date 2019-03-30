@@ -130,5 +130,47 @@ namespace Assignment1.Tests.Controllers
             Assert.AreEqual(tests[0], result);
         }
 
+
+        [TestMethod]
+        public void CreateViewValid()
+        {
+            ViewResult result = (ViewResult)controller.Create();
+            Assert.AreEqual("Create", result.ViewName);
+        }
+
+
+        [TestMethod]
+        public void DeleteIdNull()
+        {
+            int? id = null;
+
+            var result = (ViewResult)controller.Delete(id);
+
+            Assert.AreEqual("Error", result.ViewName);
+
+        }
+
+        [TestMethod]
+        public void DeleteIdInvalid()
+        {
+            var result = (ViewResult)controller.Delete(-1);
+
+            Assert.AreEqual("Error", result.ViewName);
+
+        }
+
+        [TestMethod]
+        public void DeleteIdValid()
+        {
+            Test result = (Test)((ViewResult)controller.Delete(tests[0].Id)).Model;
+            Assert.AreEqual(tests[0], result);
+        }
+
+        [TestMethod]
+        public void DeleteValidTestView()
+        {
+            ViewResult result = (ViewResult)controller.Delete(tests[0].Id);
+            Assert.AreEqual("Delete", result.ViewName);
+        }
     }
 }
