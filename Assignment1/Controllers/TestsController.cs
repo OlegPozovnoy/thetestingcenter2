@@ -40,7 +40,8 @@ namespace Assignment1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Test test = db.Tests.Find(id);
+            //Test test = db.Tests.Find(id);
+            Test test = db.Tests.SingleOrDefault( c => c.Id == id);
             if (test == null)
             {
                 return HttpNotFound();
@@ -65,8 +66,9 @@ namespace Assignment1.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Tests.Add(test);
-                db.SaveChanges();
+                //db.Tests.Add(test);
+                //db.SaveChanges();
+                db.Save(test);
                 return RedirectToAction("Index");
             }
 
@@ -81,7 +83,8 @@ namespace Assignment1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Test test = db.Tests.Find(id);
+            //Test test = db.Tests.Find(id);
+            Test test = db.Tests.SingleOrDefault(c => c.Id == id);
             if (test == null)
             {
                 return HttpNotFound();
@@ -99,8 +102,9 @@ namespace Assignment1.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(test).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(test).State = EntityState.Modified;
+                //db.SaveChanges();
+                db.Save(test);
                 return RedirectToAction("Index");
             }
             return View(test);
@@ -114,7 +118,8 @@ namespace Assignment1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Test test = db.Tests.Find(id);
+            //Test test = db.Tests.Find(id);
+            Test test = db.Tests.SingleOrDefault(c => c.Id == id);
             if (test == null)
             {
                 return HttpNotFound();
@@ -128,9 +133,12 @@ namespace Assignment1.Controllers
         [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
-            Test test = db.Tests.Find(id);
-            db.Tests.Remove(test);
-            db.SaveChanges();
+            //Test test = db.Tests.Find(id);
+            Test test = db.Tests.SingleOrDefault(c => c.Id == id);
+            //db.Tests.Remove(test);
+            //db.SaveChanges();
+            db.Delete(test);
+
             return RedirectToAction("Index");
         }
 
